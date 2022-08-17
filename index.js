@@ -1,15 +1,18 @@
+#!/usr/bin/env node
+
 const cheerio = require('cheerio')
 
 const MultiProgress = require('multi-progress')
 const progress = new MultiProgress(process.stderr)
 
+const { join } = require('path')
 const readDir = require('klaw-sync')
 const { outputFileSync } = require('fs-extra')
 
 const { baseURL, fetchPage } = require('./utils')
 
 async function main() {
-  const scrapers = readDir('./scrapers', {
+  const scrapers = readDir(join(__dirname, './scrapers'), {
     filter: (item) => !item.path.split('.').includes('skip')
   })
     .filter(v => v.path.endsWith('.js'))

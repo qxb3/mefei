@@ -1,8 +1,10 @@
 {
-  "name": "miragehelper-fetcher",
+  "name": "mefei",
+  "description": "Info fetcher for mirage realms wiki",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "bin": "./index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js -i '*.json'"
@@ -14,5 +16,9 @@
     "klaw-sync": "^6.0.0",
     "multi-progress": "^4.0.0",
     "progress": "^2.0.3"
+  },
+  "repository": {
+    "url": "https://github.com/qxb3/mefei",
+    "type": "git"
   }
 }
