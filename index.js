@@ -9,13 +9,13 @@ const { outputFileSync } = require('fs-extra')
 const { baseURL, fetchPage } = require('./utils')
 
 async function main() {
-  const scrappers = readDir('./scrappers', {
+  const scrapers = readDir('./scrapers', {
     filter: (item) => !item.path.split('.').includes('skip')
   })
     .filter(v => v.path.endsWith('.js'))
     .map(v => v.path)
 
-  for (const scrapper of scrappers) {
+  for (const scraper of scrapers) {
     const {
       name,
       pageTitle,
@@ -24,7 +24,7 @@ async function main() {
       info,
       customProps = () => {},
       path
-    } = require(scrapper)
+    } = require(scraper)
 
     const page = await fetchPage(pageTitle)
     const $ = cheerio.load(page)
